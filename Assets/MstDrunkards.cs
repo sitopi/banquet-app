@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class MstDrunkard
@@ -10,7 +7,6 @@ public class MstDrunkard
     public int hp;
     public int attack;
     public int move_speed;
-
 }
 
 [System.Serializable]
