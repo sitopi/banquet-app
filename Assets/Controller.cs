@@ -5,6 +5,9 @@ using UnityEngine.Networking;
 
 public class Controller : MonoBehaviour
 {
+    public GameObject mDrunkardPrefab;
+    public MstDrunkards drunkardsInstance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +37,27 @@ public class Controller : MonoBehaviour
     //4.結果確認
     Debug.Log(request.downloadHandler.text);
   }
+        string json = "{\"drunkards\":" + request.downloadHandler.text + "}";
+   drunkardsInstance = JsonUtility.FromJson<MstDrunkards>(json);
 
-        MstDrunkards characters = JsonUtility.FromJson<MstDrunkards>("{\"mstDrunkards\":" + request.downloadHandler.text + "}");
+        //Debug.Log(drunkardsInstance[0].mHp);
+        //MstDrunkards.mstDrunkards = characters.;
 
-Debug.Log(characters);
+        for (int i = 0;i < drunkardsInstance.drunkards.Length; ++i)
+        {
+            MstDrunkard prefab = Instantiate(mDrunkardPrefab).GetComponent<Drunkard>().m_data;
+            MstDrunkard data = drunkardsInstance.drunkards[i];
+
+            prefab.name = data.name;
+            prefab.level = data.level;
+            prefab.hp = data.hp;
+            prefab.attack = data.attack;
+            prefab.move_speed = data.move_speed;
+
+            Debug.Log(data.hp);
+
+        }
+
         // id = characterClass.characters[0].id;
         // name = characterClass.characters[0].name;
         // hp = characterClass.characters[0].hp;  
