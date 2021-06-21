@@ -1,5 +1,11 @@
 
 [System.Serializable]
+public class MstDrunkards
+{
+    public MstDrunkard[] mst_drunkards;
+}
+
+[System.Serializable]
 public class MstDrunkard
 {
     public string name;
@@ -7,10 +13,4 @@ public class MstDrunkard
     public int hp;
     public int attack;
     public int move_speed;
-}
-
-[System.Serializable]
-public class MstDrunkards
-{
-    public MstDrunkard[] mst_drunkards;
 }
