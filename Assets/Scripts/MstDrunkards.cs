@@ -12,5 +12,5 @@ public class MstDrunkard
 [System.Serializable]
 public class MstDrunkards
 {
-    public MstDrunkard[] drunkards;
+    public MstDrunkard[] mst_drunkards;
 }

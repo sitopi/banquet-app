@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mDrunkardPrefab: {fileID: 5821000706757121749, guid: 984017f6591ac43aca0ff3dfc46a6e3f, type: 3}
   drunkardsInstance:
-    drunkards: []
+    mst_drunkards: []
 --- !u!4 &1187616748
 Transform:
   m_ObjectHideFlags: 0
