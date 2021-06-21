@@ -22,18 +22,12 @@ public class Controller : MonoBehaviour
     IEnumerator getDrunkards()
     {
         yield return StartCoroutine(WebRequestManager.Instance.RunApi("/get"));
-        drunkardsInstance = JsonUtility.FromJson<MstDrunkards>(WebRequestManager.responseJson);
+        MstDrunkards drunkards = JsonUtility.FromJson<MstDrunkards>(WebRequestManager.responseJson);
 
-        for (int i = 0; i < drunkardsInstance.mst_drunkards.Length; ++i)
+        for (int i = 0; i < drunkards.mst_drunkards.Length; ++i)
         {
-            MstDrunkard prefab = Instantiate(mDrunkardPrefab).GetComponent<Drunkard>().m_data;
-            MstDrunkard data = drunkardsInstance.mst_drunkards[i];
-
-            prefab.name = data.name;
-            prefab.level = data.level;
-            prefab.hp = data.hp;
-            prefab.attack = data.attack;
-            prefab.move_speed = data.move_speed;
+            Drunkard instance = Instantiate(mDrunkardPrefab).GetComponent<Drunkard>();
+            instance.m_data = drunkards.mst_drunkards[i];
         }
     }
 }
